@@ -12,6 +12,18 @@ fetch(
 return response.json()
 }).then(function(data){
     console.log(data)
+    const code=data.weather[0].icon
+    const url=`https://openweathermap.org/img/wn/${code}.png`
+    const todaysWeather=`
+    <div>
+    <h1>${data.name}</h1>
+    <img src="${url}"/>
+    <p>temp: ${data.main.temp}</p>
+    <p>humidity: ${data.main.humidity}</p>
+    <p>Wind MPH: ${data.wind.speed}</p>
+    </div>
+    `
+    mainWeather.innerHTML=todaysWeather
 })
 }
 
