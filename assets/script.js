@@ -24,6 +24,19 @@ return response.json()
     </div>
     `
     mainWeather.innerHTML=todaysWeather
+    const lat=data.coord.lat
+    const lon=data.coord.lon
+    getFiveDayForcast(lat,lon)
+})
+}
+function getFiveDayForcast(lat,lon){
+fetch(
+    `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`
+).then(function(response){
+    return response.json()
+}).then(function(weekdata){
+   let weekarry=weekdata.list.filter(day => day.dt_txt.includes("12:00:00"))
+   console.log(weekarry)
 })
 }
 
