@@ -3,6 +3,7 @@ const apiKey="df3fb9934a7d8ebae97c6749b588071a"
 const searchButton=document.querySelector("#search-button")
 const mainWeather=document.querySelector(".mainWeather")
 const searchInput=document.querySelector("#searchBox")
+const weeklyReport=document.querySelector(".five-dayForcast")
 
 
 function searchCity(city){
@@ -37,6 +38,23 @@ fetch(
 }).then(function(weekdata){
    let weekarry=weekdata.list.filter(day => day.dt_txt.includes("12:00:00"))
    console.log(weekarry)
+   let weekcard=''
+   weekarry.forEach(day=>{
+    const weeklyIcon=day.weather[0].icon
+    const weekUrl=`https://openweathermap.org/img/wn/${weeklyIcon}.png`
+    const date=day.dt_txt.split(" ")[0]
+    console.log(date)
+    weekcard+=`
+    <div>
+    <span>${date}</span>
+    <img src="${weekUrl}"/>
+    <p>temp: ${day.main.temp}</p>
+    <p>humidity: ${day.main.humidity}</p>
+    <p>Wind MPH: ${day.wind.speed}</p>
+    </div>
+    `
+weeklyReport.innerHTML=weekcard
+   })
 })
 }
 
