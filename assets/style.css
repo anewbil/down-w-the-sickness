@@ -39,7 +39,32 @@ main{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem;
+    gap: 3rem;
     padding: 1rem;
     
+}
+.wCard{
+    max-width: 20rem;
+    min-width: 15rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+border: solid 4px red;
+padding: 1rem;
+}
+.past-search{
+    list-style: none;
+    padding: .5rem;
+    border-radius: 6px;
+    box-shadow: 3px 6px 6px rgba(0,0,0,0.6);
+}
+.past-search:hover{
+    cursor: pointer;
+    box-shadow: 3px 6px 6px rgba(231, 140, 140, 0.6)
+}
+.historySection{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
 }
